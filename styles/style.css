@@ -1,38 +1,17 @@
+/**
+ * Inspiration from:
+ * https://codepen.io/mackorichardson/pen/vNMRpK
+ * https://codepen.io/aderaaij/pen/amqoVJ
+ */
+
 html, body, textarea{
   font-family: 'VT323', monospace;
 }
 
-textarea{
-  border: none;
-  background-color: transparent;
-  resize: none;
-  outline: none;
-  width: 100%;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  font-size: 1.2em;
-  border: none;
-  overflow: auto;
-  outline: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background: rgba(150,150,150,0.05);
-  margin: 0;
-}
-
-.container{
-  padding-top: 2em;
-}
-
-.page-title, .subtitle{
-  text-align: center;
-}
-
-.subtitle{
-  font-size: 3em;
-  text-transform: uppercase;
+html{
+  background: #000;
+  background-image: -webkit-linear-gradient(top, #6A0275 10%, #040C4A 60%);
+  background-image: linear-gradient(to bottom, #6A0275 10%, #040C4A 60%);
 }
 
 .content{
@@ -41,16 +20,100 @@ textarea{
 }
 
 .card{
+  z-index: 100;
+  position: relative;
+  background: none;
+  box-shadow: none;
+}
+
+textarea{
+  border: none;
+  resize: none;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 51px 5px rgba(0,0,0,0.5);
+  border: solid 2px rgba(0,62,0,0.5);
+  font-family: 'VT323', monospace;
+  color: #00dd00;
+  background: #383838;
+  font-size: 1.2em;
+}
+
+.card-wrap{
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
   margin-bottom: 1em;
 }
 
-.card-content{
-  padding: 1em;
+.card-wrap:before{
+  content: "";
+  background: linear-gradient(#101010 50%, rgba(16, 16, 16, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+	background-size: 100% 3px, 6px 100%;
+	display: block;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+  opacity: 0.1;
+}
+
+.page-title, .subtitle{
+  text-align: center;
+  z-index: 700;
+}
+
+.page-title{
+  display: block;
+  z-index: 35;
+  position: relative;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 4em;
+  font-style: italic;
+  letter-spacing: -4px;
+  font-weight: 400;
+  margin: 0.25em 0 0.25em;
+  line-height: 1.25;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3ff8c6), color-stop(0%, #3fa8c6), color-stop(100%, #399ab2));
+  background-image: -webkit-linear-gradient(top, #3fa8c6 0%, #3fa8c6 0%, #ff9ab2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle{
+  font-size: 3em;
+  color: #ec008c;
+  margin: 0;
+  font-family: 'Mr Dafoe', serif;
+  text-shadow: 0px 1x 0px #530031;
+}
+
+.button{
+  z-index: 100;
+  position: relative;
 }
 
 .add-card{
   font-size: 1.2em;
   font-weight: bold;
+  color: #00dd00;
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.add-card:hover{
+  color: #00aa00
 }
 
 .delete{
@@ -58,13 +121,15 @@ textarea{
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  background: #ff3860;
+  background: rgba(199, 0, 118, 0.9);
   z-index:1000;
 }
 
 .card-columns > .column{
   height: 100vh;
   display: block;
+  position: relative;
+  z-index: 35;
 }
 
 .notification{
@@ -75,8 +140,64 @@ textarea{
   padding: 1em;
   display: inline-block;
   transition: left 1s;
+  z-index: 100;
 }
 
 .notification.active{
   left: 0%;
+}
+
+.background{
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+}
+
+.background:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: -webkit-linear-gradient(transparent 75%, rgba(0, 0, 0, 0.5) 30%);
+  background-image: linear-gradient(transparent 75%, rgba(0, 0, 0, 0.5) 30%);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+.grid{
+  position: fixed;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  perspective: 450px;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.grid-fade {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+  opacity: 0.4;
+	background: radial-gradient(ellipse at 50% 50%, #040C4A 0%, #6A0275 80%);
+  z-index: 2;
+}
+
+.grid-lines {
+  width: 100%;
+  height: 200%;
+  background-image: linear-gradient(to right, rgba(236, 0, 140, 0.3) 1px, transparent 0), linear-gradient(to bottom, rgba(236, 0, 140, 0.3) 1px, transparent 0);
+  background-size: 45px 30px;
+  background-repeat: repeat;
+  transform-origin: 100% 0 0;
+  transform: rotateX(45deg) translateY(30%)
 }

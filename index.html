@@ -2,82 +2,66 @@
 <html ng-app="retroApp">
   <head>
     <meta charset="utf-8">
-    <title>Hoof Hearted Retro</title>
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <title>Retrospective</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323|Press+Start+2P|Mr+Dafoe" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body class="container" ng-controller="RetroListController">
 
+    <div class="background"></div>
+    <div class="grid">
+      <div class="grid-fade"></div>
+      <div class="grid-lines"></div>
+    </div>
+
     <div class="notification">{{notification}}</div>
 
-    <div class="columns">
-      <div class="column">
-        <h1 class="title page-title">Hoof Hearted Retro</h1>
-      </div>
-    </div>
+    <h1 class="page-title">Retrospective</h1>
 
     <div class="columns card-columns">
 
-      <!-- Good Column -->
+      <!-- Column Bad -->
       <div class="column column-good">
         <h2 class="subtitle">Good</h2>
         <div class="columns">
           <div class="column column-list">
-            <div ng-repeat="card in cardlist.good">
-              <div id="good-card-{{$index}}" class="card">
+            <div ng-repeat="card in cardlist.good" id="good-card-{{$index}}" class="card card-wrap">
                 <a class="delete is-danger" ng-click="delete($index, 'good')"></a>
-                <div class="card-content">
-                  <div class="content">
-                    <form><textarea class="card-content" ng-model="card.content" ng-change="save($index, card.content, this)"></textarea></form>
-                  </div>
-              </div>
+                <textarea ng-model="card.content" ng-keyup="save($index, card.content, this); autoExpand($event);"></textarea>
             </div>
           </div>
-          </div>
         </div>
-        <a class="add-card button is-primary" ng-click="add('good')"><span class="icon" ><i class="fa fa-plus" aria-hidden="true"></i></span><span>Add Card</span></a>
-      </div><!--Column Good-->
+        <a class="add-card" ng-click="add('good')"><span>Add Card</span></a>
+      </div><!--Column bad-->
 
       <!-- Column Bad -->
       <div class="column column-bad">
         <h2 class="subtitle">Bad</h2>
         <div class="columns">
           <div class="column column-list">
-            <div ng-repeat="card in cardlist.bad">
-              <div id="good-card-{{$index}}" class="card">
+            <div ng-repeat="card in cardlist.bad" id="good-card-{{$index}}" class="card card-wrap">
                 <a class="delete is-danger" ng-click="delete($index, 'bad')"></a>
-                <div class="card-content">
-                  <div class="content">
-                    <form><textarea class="card-content" ng-model="card.content" ng-change="save($index, card.content, this)"></textarea></form>
-                  </div>
-              </div>
+                <textarea ng-model="card.content" ng-keyup="save($index, card.content, this); autoExpand($event);"></textarea>
             </div>
           </div>
-          </div>
         </div>
-        <a class="add-card button is-primary" ng-click="add('bad')"><span class="icon" ><i class="fa fa-plus" aria-hidden="true"></i></span><span>Add Card</span></a>
+        <a class="add-card" ng-click="add('bad')"><span>Add Card</span></a>
       </div><!--Column bad-->
 
+      <!-- Column Bad -->
       <div class="column column-learned">
         <h2 class="subtitle">Learned</h2>
         <div class="columns">
           <div class="column column-list">
-            <div ng-repeat="card in cardlist.learned">
-              <div id="good-card-{{$index}}" class="card">
+            <div ng-repeat="card in cardlist.learned" id="good-card-{{$index}}" class="card card-wrap">
                 <a class="delete is-danger" ng-click="delete($index, 'learned')"></a>
-                <div class="card-content">
-                  <div class="content">
-                    <form><textarea class="card-content" ng-model="card.content" ng-change="save($index, card.content, this)"></textarea></form>
-                  </div>
-              </div>
+                <textarea ng-model="card.content" ng-keyup="save($index, card.content, this); autoExpand($event);"></textarea>
             </div>
           </div>
-          </div>
         </div>
-        <a class="add-card button is-primary" ng-click="add('learned')"><span class="icon" ><i class="fa fa-plus" aria-hidden="true"></i></span><span>Add Card</span></a>
-      </div><!--Column learned-->
+        <a class="add-card" ng-click="add('learned')"><span>Add Card</span></a>
+      </div><!--Column bad-->
 
     </div>
 
