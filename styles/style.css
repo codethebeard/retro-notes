@@ -136,7 +136,7 @@ textarea{
   position: fixed;
   margin-left: 1em;
   top: 1em;
-  left: -30%;
+  left: -60%;
   padding: 1em;
   display: inline-block;
   transition: left 1s;
@@ -200,4 +200,24 @@ textarea{
   background-repeat: repeat;
   transform-origin: 100% 0 0;
   transform: rotateX(45deg) translateY(30%)
+}
+
+/**/
+.content{
+  font-size: 1.3em;
+  margin-bottom: 0em !important;
+  background: rgba(255,255,255,0.8);
+  padding: 1em;
+  text-align: left;
+}
+
+.content .subtitle{
+  font-family: sans-serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.printable{
+  display: none;
 }

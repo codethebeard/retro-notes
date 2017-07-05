@@ -1,0 +1,69 @@
+@media print{
+  .printable{
+    display: block;
+    font-family: sans-serif;
+  }
+
+  html {
+    font: 100%/1.4 Georgia, Times, "Times New Roman", serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 40rem) {
+    html { font-size: 112%; }
+  }
+
+  @media (min-width: 64rem) {
+    html { font-size: 120%; }
+  }
+
+  body {
+    background-color: #FAFAFA;
+    color: #333333;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 53rem;
+    width: 90%;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 400;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.313rem;
+    margin-bottom: .5rem;
+  }
+
+  @media (min-width: 40rem) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.5rem; }
+  }
+
+  p {
+    max-width: 30rem; /* for better readability */
+  }
+
+
+
+  .non-printable{
+    display: none;
+  }
+
+}

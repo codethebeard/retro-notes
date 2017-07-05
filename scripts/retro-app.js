@@ -9,7 +9,7 @@ retroApp.controller('RetroListController', function ($scope, mySocket, $timeout)
 
   $scope.autoExpand = function(e) {
       var element = typeof e === 'object' ? e.target : document.getElementById(e);
-  		var scrollHeight = element.scrollHeight - 10; // replace 60 by the sum of padding-top and padding-bottom
+  		var scrollHeight = element.scrollHeight - 15; // replace 60 by the sum of padding-top and padding-bottom
       element.style.height =  scrollHeight + "px";
   };
 
@@ -58,6 +58,8 @@ retroApp.controller('RetroListController', function ($scope, mySocket, $timeout)
     }, 3000);
   });
 
-
+  mySocket.on('resetBrowser', function(){
+    location.reload();
+  })
 
 })
